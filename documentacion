@@ -1,0 +1,58 @@
+Documentación del Proyecto: "Celebrity Age Clash"
+1. Descripción del Concepto
+"Celebrity Age Clash" es un juego de estrategia y estimación de edades. A diferencia de los juegos de cartas convencionales, aquí el valor de las cartas (la edad de los famosos) permanece oculto para el jugador durante toda la partida.
+
+El Objetivo: El jugador debe formar una mano de famosos cuyas edades sumen lo más cerca posible al número de la banca, sin excederlo.
+
+La Dinámica de Incertidumbre:
+
+La Banca: Al inicio, el sistema selecciona un conjunto aleatorio de famosos y suma sus edades en el servidor. Este total es un dato privado oculto al usuario.
+
+La Selección: El jugador solicita cartas (famosos). El servidor envía solo la información visual y nominal (nombre, foto, profesión), pero nunca la edad.
+
+El Desafío: El jugador debe confiar en su conocimiento cultural para estimar la edad de cada famoso y decidir, basándose únicamente en su propia intuición, cuándo detenerse.
+
+La Revelación: Al finalizar la partida, el servidor procesa el cierre: se revelan las edades reales de los famosos de la banca y los elegidos por el jugador, calculando quién ha ganado.
+
+2. Pasos a seguir para el desarrollo y puesta en marcha
+Para construir esto con un stack profesional (Django + Docker), te recomiendo seguir este flujo de trabajo:
+
+Paso 1: Diseño de la Base de Datos (El Modelo)
+Define la tabla Famoso (Nombre, Edad, URL Imagen).
+
+Define la tabla Partida (ID, Fecha, Jugador, IDs de famosos elegidos, ID de famosos de banca).
+
+Seguridad: Asegúrate de que los campos edad no sean accesibles mediante los serializers o las vistas hasta que la partida esté marcada como finalizada.
+
+Paso 2: Configuración de Entorno y Docker
+Crear la estructura con Docker Compose para levantar una base de datos PostgreSQL (para manejar la persistencia de las partidas) y el contenedor de Django.
+
+Configurar un archivo .env para las variables críticas (la SECRET_KEY de Django, credenciales de DB, y configuraciones de debug).
+
+Paso 3: Lógica del "Game Engine" (Backend)
+Crear una función que seleccione los famosos para la banca al iniciar la partida.
+
+Implementar un endpoint que reciba la solicitud de una "nueva carta" y retorne los datos del famoso sin la edad.
+
+Implementar la lógica final que compara la suma real del jugador vs. la suma real de la banca y devuelve el resultado final.
+
+Paso 4: Frontend (UI/UX)
+Crear el panel donde el usuario ve las fotos de sus famosos elegidos.
+
+Desarrollar un sistema de turnos simple (botón "Pedir carta" y botón "Plantarse").
+
+Crear el "Modal de Revelación" que muestra las edades reales recién al terminar el juego.
+
+Paso 5: Despliegue y Alta del Juego
+Preparación para producción: Configurar Gunicorn o Nginx dentro de tu configuración de Docker para servir la aplicación de forma segura.
+
+Hosting: Elegir un servicio como Railway, Render o DigitalOcean que soporte Docker de forma nativa para subir tu proyecto.
+
+Gestión de Medios: Como el juego depende de fotos, asegúrate de que las URLs de las imágenes sean estables (podrías usar un servicio de almacenamiento de imágenes o hostearlas tú mismo).
+
+3. Consideraciones clave para el éxito
+Integridad de Datos: Es vital que la lógica de "suma de edades" ocurra solo en el servidor. Nunca envíes la edad al navegador hasta que la partida haya terminado; así evitas que alguien vea la respuesta abriendo la consola del desarrollador.
+
+Experiencia de Usuario: Como es un juego de estimación, sería útil añadir una pequeña descripción de quién es el famoso (profesión, logros) para ayudar al usuario a estimar mejor la edad.
+
+Escalabilidad: Al usar Django y Postgres, si esto crece, podrás guardar el historial de partidas, rankings de mejores jugadores o incluso un sistema de usuarios registrados.
