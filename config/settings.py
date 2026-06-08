@@ -84,13 +84,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+# ==============================================================================
+# CONFIGURACIÓN DE LA BASE DE DATOS (POSTGRESQL)
+# ==============================================================================
+# Leemos las credenciales sensibles desde el archivo .env usando 'django-environ'.
+# Esto evita subir contraseñas o datos críticos al repositorio de Git.
 DATABASES = {
     'default': {
+        # Usamos el motor de base de datos oficial de Django para PostgreSQL
         'ENGINE': 'django.db.backends.postgresql',
+        # Nombre de la base de datos (leído del .env)
         'NAME': env('DB_NAME'),
+        # Usuario de acceso (leído del .env)
         'USER': env('DB_USER'),
+        # Contraseña del usuario (leída del .env)
         'PASSWORD': env('DB_PASSWORD'),
+        # Dirección IP o nombre de host del contenedor de Postgres en Docker (leído del .env)
         'HOST': env('DB_HOST'),
+        # Puerto por defecto de Postgres (5432)
         'PORT': env('DB_PORT', default='5432')
     }
 }

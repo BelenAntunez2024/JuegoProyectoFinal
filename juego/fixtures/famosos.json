@@ -1,0 +1,90 @@
+[
+  {
+    "model": "juego.famoso",
+    "pk": 1,
+    "fields": {
+      "nombre": "Lionel Messi",
+      "profesion": "Futbolista",
+      "edad": 38,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg",
+      "categoria": "Deportes"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 2,
+    "fields": {
+      "nombre": "Keanu Reeves",
+      "profesion": "Actor",
+      "edad": 61,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Keanu_Reeves_%28crop_and_levels%29_%28cropped%29.jpg",
+      "categoria": "Cine"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 3,
+    "fields": {
+      "nombre": "Taylor Swift",
+      "profesion": "Cantante y Compositora",
+      "edad": 36,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Taylor_Swift_at_the_2024_Golden_Globes_3.png",
+      "categoria": "Música"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 4,
+    "fields": {
+      "nombre": "Shakira",
+      "profesion": "Cantante y Bailarina",
+      "edad": 49,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Shakira_in_2023_%282%29.jpg",
+      "categoria": "Música"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 5,
+    "fields": {
+      "nombre": "Tom Cruise",
+      "profesion": "Actor y Productor",
+      "edad": 63,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Tom_Cruise_by_Gage_Skidmore_2.jpg",
+      "categoria": "Cine"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 6,
+    "fields": {
+      "nombre": "Brad Pitt",
+      "profesion": "Actor",
+      "edad": 62,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Brad_Pitt_2019_by_Glenn_Francis.jpg",
+      "categoria": "Cine"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 7,
+    "fields": {
+      "nombre": "Scarlett Johansson",
+      "profesion": "Actriz",
+      "edad": 41,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Scarlett_Johansson_by_Gage_Skidmore_2.jpg",
+      "categoria": "Cine"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 8,
+    "fields": {
+      "nombre": "Elon Musk",
+      "profesion": "Empresario y Tecnólogo",
+      "edad": 54,
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+      "categoria": "Tecnología"
+    }
+  }
+]

@@ -1,24 +1,39 @@
 services:
+  # --- SERVICIO 1: BASE DE DATOS (POSTGRESQL) ---
   db:
+    # Descarga la imagen oficial de PostgreSQL versión 16
     image: postgres:16
+    # Persistencia: Guarda la base de datos en un volumen para que los datos no se borren 
+    # cuando apaguemos el contenedor.
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    # Variables de entorno iniciales para crear la base de datos en Postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=tu_contraseña_segura
       - POSTGRES_DB=postgres
     
+  # --- SERVICIO 2: APLICACIÓN WEB (DJANGO) ---
   web:
+    # Construye el contenedor utilizando las instrucciones de nuestro 'Dockerfile'
     build: .
+    # Comando que se ejecuta al levantar el servicio (corre el servidor de Django en el puerto 8000)
     command: python manage.py runserver 0.0.0.0:8000
+    # Sincronización: Vincula la carpeta actual del host con /app en el contenedor. 
+    # Cualquier cambio que hagas en tu código se reflejará inmediatamente sin reconstruir.
     volumes:
       - .:/app
+    # Mapeo de puertos: Redirecciona el puerto 8000 de tu máquina local al 8000 del contenedor
     ports:
       - "8000:8000"
+    # Carga las variables de entorno del archivo .env a Django
     env_file:
       - .env
+    # Orden de arranque: Asegura que el servicio de base de datos 'db' esté encendido 
+    # antes de intentar levantar la web de Django.
     depends_on:
       - db
 
+# Declaración de los volúmenes del sistema
 volumes:
   postgres_data:
