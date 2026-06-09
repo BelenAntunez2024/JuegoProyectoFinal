@@ -23,6 +23,9 @@ services:
     # Cualquier cambio que hagas en tu código se reflejará inmediatamente sin reconstruir.
     volumes:
       - .:/app
+      # Volumen persistente para las imágenes subidas por el admin.
+      # Sin esto, al reiniciar el contenedor se borrarían todas las fotos.
+      - media_data:/app/media
     # Mapeo de puertos: Redirecciona el puerto 8000 de tu máquina local al 8000 del contenedor
     ports:
       - "8000:8000"
@@ -36,4 +39,7 @@ services:
 
 # Declaración de los volúmenes del sistema
 volumes:
+  # Datos de la base de datos PostgreSQL
   postgres_data:
+  # Imágenes de famosos subidas desde el panel de admin
+  media_data:

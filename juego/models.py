@@ -15,8 +15,10 @@ class Famoso(models.Model):
     # La edad real (Dato crítico que se oculta durante la partida)
     edad = models.IntegerField()
     
-    # Enlace a la imagen online del famoso
-    imagen_url = models.URLField(max_length=500)
+    # ImageField: guarda la foto en el servidor en la carpeta 'media/famosos/'.
+    # Django se encarga de generar la URL de acceso automáticamente.
+    # blank=True, null=True → el campo no es obligatorio, por si hay famosos sin foto.
+    imagen = models.ImageField(upload_to='famosos/', blank=True, null=True)
     
     # Campo opcional para filtrar famosos por categoría (Ej: Cine, Música, Deportes)
     categoria = models.CharField(max_length=50, blank=True)
