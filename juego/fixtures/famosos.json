@@ -4,87 +4,1649 @@
     "pk": 1,
     "fields": {
       "nombre": "Lionel Messi",
+      "edad": 31,
       "profesion": "Futbolista",
-      "edad": 38,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg",
-      "categoria": "Deportes"
+      "categoria": "Deportes",
+      "imagen": "Lionel-Messi.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 2,
     "fields": {
-      "nombre": "Keanu Reeves",
-      "profesion": "Actor",
-      "edad": 61,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Keanu_Reeves_%28crop_and_levels%29_%28cropped%29.jpg",
-      "categoria": "Cine"
+      "nombre": "Cristiano Ronaldo",
+      "edad": 32,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Cristiano_Ronaldo.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 3,
     "fields": {
-      "nombre": "Taylor Swift",
-      "profesion": "Cantante y Compositora",
-      "edad": 36,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Taylor_Swift_at_the_2024_Golden_Globes_3.png",
-      "categoria": "Música"
+      "nombre": "Neymar",
+      "edad": 33,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Neymar.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 4,
     "fields": {
-      "nombre": "Shakira",
-      "profesion": "Cantante y Bailarina",
-      "edad": 49,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Shakira_in_2023_%282%29.jpg",
-      "categoria": "Música"
+      "nombre": "Kylian Mbappe",
+      "edad": 34,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Mbappe.png"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 5,
     "fields": {
-      "nombre": "Tom Cruise",
-      "profesion": "Actor y Productor",
-      "edad": 63,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Tom_Cruise_by_Gage_Skidmore_2.jpg",
-      "categoria": "Cine"
+      "nombre": "Erling Haaland",
+      "edad": 35,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Erling_Haaland.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 6,
     "fields": {
-      "nombre": "Brad Pitt",
-      "profesion": "Actor",
-      "edad": 62,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Brad_Pitt_2019_by_Glenn_Francis.jpg",
-      "categoria": "Cine"
+      "nombre": "Julian Alvarez",
+      "edad": 36,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Julián Álvarez.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 7,
     "fields": {
-      "nombre": "Scarlett Johansson",
-      "profesion": "Actriz",
-      "edad": 41,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Scarlett_Johansson_by_Gage_Skidmore_2.jpg",
-      "categoria": "Cine"
+      "nombre": "Lautaro Martinez",
+      "edad": 37,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Lautaro_Martínez.jpg"
     }
   },
   {
     "model": "juego.famoso",
     "pk": 8,
     "fields": {
-      "nombre": "Elon Musk",
-      "profesion": "Empresario y Tecnólogo",
+      "nombre": "LeBron James",
+      "edad": 38,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "LeBron_James.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 9,
+    "fields": {
+      "nombre": "Stephen Curry",
+      "edad": 39,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Stephen_Curry.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 10,
+    "fields": {
+      "nombre": "Kevin Durant",
+      "edad": 40,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Kevin_Durant.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 11,
+    "fields": {
+      "nombre": "Novak Djokovic",
+      "edad": 41,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": "Novak_Djokovic.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 12,
+    "fields": {
+      "nombre": "Rafael Nadal",
+      "edad": 42,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 13,
+    "fields": {
+      "nombre": "Carlos Alcaraz",
+      "edad": 43,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": "Carlos_Alcaraz.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 14,
+    "fields": {
+      "nombre": "Jannik Sinner",
+      "edad": 44,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": "Jannik_Sinner.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 15,
+    "fields": {
+      "nombre": "Lewis Hamilton",
+      "edad": 30,
+      "profesion": "Piloto",
+      "categoria": "Deportes",
+      "imagen": "Lewis_Hamilton.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 16,
+    "fields": {
+      "nombre": "Max Verstappen",
+      "edad": 31,
+      "profesion": "Piloto",
+      "categoria": "Deportes",
+      "imagen": "Max_Verstappen.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 17,
+    "fields": {
+      "nombre": "Fernando Alonso",
+      "edad": 32,
+      "profesion": "Piloto",
+      "categoria": "Deportes",
+      "imagen": "Fernando_Alonso.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 18,
+    "fields": {
+      "nombre": "Michael Phelps",
+      "edad": 33,
+      "profesion": "Nadador",
+      "categoria": "Deportes",
+      "imagen": "Michael_Phelps.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 19,
+    "fields": {
+      "nombre": "Simone Biles",
+      "edad": 34,
+      "profesion": "Gimnasta Artistica",
+      "categoria": "Deportes",
+      "imagen": "Simone_Biles.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 20,
+    "fields": {
+      "nombre": "Usain Bolt",
+      "edad": 35,
+      "profesion": "Atleta",
+      "categoria": "Deportes",
+      "imagen": "Usain_Bolt.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 21,
+    "fields": {
+      "nombre": "Virat Kohli",
+      "edad": 36,
+      "profesion": "Criquetista",
+      "categoria": "Deportes",
+      "imagen": "Virat_Kohli.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 22,
+    "fields": {
+      "nombre": "Rohit Sharma",
+      "edad": 37,
+      "profesion": "Criquetista",
+      "categoria": "Deportes",
+      "imagen": "Rohit_Sharma.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 23,
+    "fields": {
+      "nombre": "Shohei Ohtani",
+      "edad": 38,
+      "profesion": "Beisbolista",
+      "categoria": "Deportes",
+      "imagen": "Shohei_Ohtani.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 24,
+    "fields": {
+      "nombre": "Aaron Judge",
+      "edad": 39,
+      "profesion": "Beisbolista",
+      "categoria": "Deportes",
+      "imagen": "Aaron_Judge.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 25,
+    "fields": {
+      "nombre": "Tom Brady",
+      "edad": 40,
+      "profesion": "Futbolista Americano",
+      "categoria": "Deportes",
+      "imagen": "Tom_Brady.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 26,
+    "fields": {
+      "nombre": "Patrick Mahomes",
+      "edad": 41,
+      "profesion": "Futbolista Americano",
+      "categoria": "Deportes",
+      "imagen": "Patrick_Mahomes.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 27,
+    "fields": {
+      "nombre": "Travis Kelce",
+      "edad": 42,
+      "profesion": "Futbolista Americano",
+      "categoria": "Deportes",
+      "imagen": "Travis_Kelce.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 28,
+    "fields": {
+      "nombre": "Giannis Antetokounmpo",
+      "edad": 43,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Giannis_Antetokounmpo.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 29,
+    "fields": {
+      "nombre": "Nikola Jokic",
+      "edad": 44,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Nikola_Jokic.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 30,
+    "fields": {
+      "nombre": "Luka Doncic",
+      "edad": 30,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Luka_Doncic.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 31,
+    "fields": {
+      "nombre": "Joel Embiid",
+      "edad": 31,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Joel_Embiid.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 32,
+    "fields": {
+      "nombre": "Kobe Bryant",
+      "edad": 32,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Kobe_Bryant_.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 33,
+    "fields": {
+      "nombre": "Michael Jordan",
+      "edad": 33,
+      "profesion": "Basquetbolista",
+      "categoria": "Deportes",
+      "imagen": "Michael_Jordan.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 34,
+    "fields": {
+      "nombre": "Roger Federer",
+      "edad": 34,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 35,
+    "fields": {
+      "nombre": "Andy Murray",
+      "edad": 35,
+      "profesion": "ExTenista",
+      "categoria": "Deportes",
+      "imagen": "Andy_Murray.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 36,
+    "fields": {
+      "nombre": "Sergio Ramos",
+      "edad": 36,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Sergio_Ramos.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 37,
+    "fields": {
+      "nombre": "Luka Modric",
+      "edad": 37,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Luka_Modric.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 38,
+    "fields": {
+      "nombre": "Karim Benzema",
+      "edad": 38,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Karim_Benzema.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 39,
+    "fields": {
+      "nombre": "Mohamed Salah",
+      "edad": 39,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Mohamed_Salah.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 40,
+    "fields": {
+      "nombre": "Sadio Mane",
+      "edad": 40,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Sadio_Mane.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 41,
+    "fields": {
+      "nombre": "Robert Lewandowski",
+      "edad": 41,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Robert_Lewandowski.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 42,
+    "fields": {
+      "nombre": "Harry Kane",
+      "edad": 42,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Harry_Kane.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 43,
+    "fields": {
+      "nombre": "Son Heung-min",
+      "edad": 43,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Son_Heung_min.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 44,
+    "fields": {
+      "nombre": "Alex Morgan",
+      "edad": 44,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Alex_Morgan.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 45,
+    "fields": {
+      "nombre": "Megan Rapinoe",
+      "edad": 30,
+      "profesion": "ExFutbolista",
+      "categoria": "Deportes",
+      "imagen": "Megan_Rapinoe.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 46,
+    "fields": {
+      "nombre": "Aitana Bonmati",
+      "edad": 31,
+      "profesion": "Futbolista",
+      "categoria": "Deportes",
+      "imagen": "Aitana_Bonmati.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 47,
+    "fields": {
+      "nombre": "Paula Badosa",
+      "edad": 32,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": "Paula_Badosa.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 48,
+    "fields": {
+      "nombre": "Iga Swiatek",
+      "edad": 33,
+      "profesion": "Tenista",
+      "categoria": "Deportes",
+      "imagen": "Iga_Swiatek.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 49,
+    "fields": {
+      "nombre": "Valentino Rossi",
+      "edad": 34,
+      "profesion": "Piloto",
+      "categoria": "Deportes",
+      "imagen": "Valentino_Rossi.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 50,
+    "fields": {
+      "nombre": "Marc Marquez",
+      "edad": 35,
+      "profesion": "Piloto",
+      "categoria": "Deportes",
+      "imagen": "Marc_Marquez.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 51,
+    "fields": {
+      "nombre": "Shakira",
+      "edad": 26,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Shakira.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 52,
+    "fields": {
+      "nombre": "Taylor Swift",
+      "edad": 27,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Taylor_Swift.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 53,
+    "fields": {
+      "nombre": "Adele",
+      "edad": 28,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Adele.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 54,
+    "fields": {
+      "nombre": "Ed Sheeran",
+      "edad": 29,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Ed_Sheeran.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 55,
+    "fields": {
+      "nombre": "Bruno Mars",
+      "edad": 30,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Bruno_Mars.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 56,
+    "fields": {
+      "nombre": "Dua Lipa",
+      "edad": 31,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Dua_Lipa.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 57,
+    "fields": {
+      "nombre": "Lady Gaga",
+      "edad": 32,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Lady_Gaga.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 58,
+    "fields": {
+      "nombre": "Bad Bunny",
+      "edad": 33,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Bad_Bunny.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 59,
+    "fields": {
+      "nombre": "Karol G",
+      "edad": 34,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Karol_G.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 60,
+    "fields": {
+      "nombre": "The Weeknd",
+      "edad": 35,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "The_Weeknd.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 61,
+    "fields": {
+      "nombre": "Ariana Grande",
+      "edad": 36,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Ariana_Grande.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 62,
+    "fields": {
+      "nombre": "Billie Eilish",
+      "edad": 37,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Billie_Eilish.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 63,
+    "fields": {
+      "nombre": "Justin Bieber",
+      "edad": 38,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Justin_Bieber.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 64,
+    "fields": {
+      "nombre": "Selena Gomez",
+      "edad": 39,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Selena_Gomez.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 65,
+    "fields": {
+      "nombre": "Rihanna",
+      "edad": 40,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Rihanna.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 66,
+    "fields": {
+      "nombre": "Beyonce",
+      "edad": 41,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Beyonce.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 67,
+    "fields": {
+      "nombre": "Jay-Z",
+      "edad": 42,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Jay-Z.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 68,
+    "fields": {
+      "nombre": "Drake",
+      "edad": 43,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Drake.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 69,
+    "fields": {
+      "nombre": "Katy Perry",
+      "edad": 44,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Katy_Perry.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 70,
+    "fields": {
+      "nombre": "Miley Cyrus",
+      "edad": 45,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Miley_Cyrus.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 71,
+    "fields": {
+      "nombre": "Olivia Rodrigo",
+      "edad": 46,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Olivia_Rodrigo.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 72,
+    "fields": {
+      "nombre": "Harry Styles",
+      "edad": 47,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Harry_Styles.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 73,
+    "fields": {
+      "nombre": "Post Malone",
+      "edad": 48,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Post_Malone.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 74,
+    "fields": {
+      "nombre": "Sam Smith",
+      "edad": 49,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Sam_Smith.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 75,
+    "fields": {
+      "nombre": "Sia",
+      "edad": 25,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Sia.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 76,
+    "fields": {
+      "nombre": "David Guetta",
+      "edad": 26,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "David_Guetta.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 77,
+    "fields": {
+      "nombre": "Calvin Harris",
+      "edad": 27,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Calvin_Harris.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 78,
+    "fields": {
+      "nombre": "Rosalia",
+      "edad": 28,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Rosalia.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 79,
+    "fields": {
+      "nombre": "Maluma",
+      "edad": 29,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Maluma.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 80,
+    "fields": {
+      "nombre": "J Balvin",
+      "edad": 30,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "J_Balvin.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 81,
+    "fields": {
+      "nombre": "Luis Fonsi",
+      "edad": 31,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Luis_Fonsi.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 82,
+    "fields": {
+      "nombre": "Sebastian Yatra",
+      "edad": 32,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Sebastian_Yatra.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 83,
+    "fields": {
+      "nombre": "Camila Cabello",
+      "edad": 33,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Camila_Cabello.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 84,
+    "fields": {
+      "nombre": "Shawn Mendes",
+      "edad": 34,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Shawn_Mendes.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 85,
+    "fields": {
+      "nombre": "Jennifer Lopez",
+      "edad": 35,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Jennifer_Lopez.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 86,
+    "fields": {
+      "nombre": "Marc Anthony",
+      "edad": 36,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Marc_Anthony.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 87,
+    "fields": {
+      "nombre": "Enrique Iglesias",
+      "edad": 37,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Enrique_Iglesias.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 88,
+    "fields": {
+      "nombre": "Pitbull",
+      "edad": 38,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Pitbull.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 89,
+    "fields": {
+      "nombre": "Cher",
+      "edad": 39,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Cher.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 90,
+    "fields": {
+      "nombre": "Celine Dion",
+      "edad": 40,
+      "profesion": "Cantante",
+      "categoria": "Musica",
+      "imagen": "Celine_Dion.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 91,
+    "fields": {
+      "nombre": "Tom Hanks",
+      "edad": 49,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Tom_Hanks.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 92,
+    "fields": {
+      "nombre": "Brad Pitt",
+      "edad": 50,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Brad_Pitt.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 93,
+    "fields": {
+      "nombre": "Leonardo DiCaprio",
+      "edad": 51,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Leonardo_DiCaprio.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 94,
+    "fields": {
+      "nombre": "Keanu Reeves",
+      "edad": 52,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Keanu_Reeves.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 95,
+    "fields": {
+      "nombre": "Jennifer Aniston",
+      "edad": 53,
+      "profesion": "Actriz",
+      "categoria": "Cine",
+      "imagen": "Jennifer_Aniston.png"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 96,
+    "fields": {
+      "nombre": "Scarlett Johansson",
       "edad": 54,
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
-      "categoria": "Tecnología"
+      "profesion": "Actriz",
+      "categoria": "Cine",
+      "imagen": "Scarlett_Johansson.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 97,
+    "fields": {
+      "nombre": "Zendaya",
+      "edad": 55,
+      "profesion": "Actriz",
+      "categoria": "Cine",
+      "imagen": "Zendaya.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 98,
+    "fields": {
+      "nombre": "Ryan Reynolds",
+      "edad": 56,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Ryan_Reynolds.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 99,
+    "fields": {
+      "nombre": "Emma Stone",
+      "edad": 57,
+      "profesion": "Actriz",
+      "categoria": "Cine",
+      "imagen": "Emma_Stone.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 100,
+    "fields": {
+      "nombre": "Robert Downey Jr.",
+      "edad": 58,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Robert_Downey_Jr.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 101,
+    "fields": {
+      "nombre": "Chris Hemsworth",
+      "edad": 59,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Chris_Hemsworth.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 102,
+    "fields": {
+      "nombre": "Chris Evans",
+      "edad": 60,
+      "profesion": "Actor",
+      "categoria": "Cine",
+      "imagen": "Chris_Evans.jpg"
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 103,
+    "fields": {
+      "nombre": "Margot Robbie",
+      "edad": 61,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 104,
+    "fields": {
+      "nombre": "Natalie Portman",
+      "edad": 62,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 105,
+    "fields": {
+      "nombre": "Anne Hathaway",
+      "edad": 28,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 106,
+    "fields": {
+      "nombre": "Johnny Depp",
+      "edad": 29,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 107,
+    "fields": {
+      "nombre": "Will Smith",
+      "edad": 30,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 108,
+    "fields": {
+      "nombre": "Denzel Washington",
+      "edad": 31,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 109,
+    "fields": {
+      "nombre": "Morgan Freeman",
+      "edad": 32,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 110,
+    "fields": {
+      "nombre": "Matt Damon",
+      "edad": 33,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 111,
+    "fields": {
+      "nombre": "Ben Affleck",
+      "edad": 34,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 112,
+    "fields": {
+      "nombre": "Gal Gadot",
+      "edad": 35,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 113,
+    "fields": {
+      "nombre": "Jason Momoa",
+      "edad": 36,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 114,
+    "fields": {
+      "nombre": "Henry Cavill",
+      "edad": 37,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 115,
+    "fields": {
+      "nombre": "Tom Cruise",
+      "edad": 38,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 116,
+    "fields": {
+      "nombre": "Sandra Bullock",
+      "edad": 39,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 117,
+    "fields": {
+      "nombre": "Julia Roberts",
+      "edad": 40,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 118,
+    "fields": {
+      "nombre": "Nicole Kidman",
+      "edad": 41,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 119,
+    "fields": {
+      "nombre": "Meryl Streep",
+      "edad": 42,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 120,
+    "fields": {
+      "nombre": "Hugh Jackman",
+      "edad": 43,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 121,
+    "fields": {
+      "nombre": "Ryan Gosling",
+      "edad": 44,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 122,
+    "fields": {
+      "nombre": "Emma Watson",
+      "edad": 45,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 123,
+    "fields": {
+      "nombre": "Daniel Radcliffe",
+      "edad": 46,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 124,
+    "fields": {
+      "nombre": "Rupert Grint",
+      "edad": 47,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 125,
+    "fields": {
+      "nombre": "Millie Bobby Brown",
+      "edad": 48,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 126,
+    "fields": {
+      "nombre": "Pedro Pascal",
+      "edad": 49,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 127,
+    "fields": {
+      "nombre": "Jenna Ortega",
+      "edad": 50,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 128,
+    "fields": {
+      "nombre": "Timothee Chalamet",
+      "edad": 51,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 129,
+    "fields": {
+      "nombre": "Florence Pugh",
+      "edad": 52,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 130,
+    "fields": {
+      "nombre": "Anya Taylor-Joy",
+      "edad": 53,
+      "profesion": "Actor/Actriz",
+      "categoria": "Cine",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 131,
+    "fields": {
+      "nombre": "Ibai Llanos",
+      "edad": 27,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 132,
+    "fields": {
+      "nombre": "AuronPlay",
+      "edad": 28,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 133,
+    "fields": {
+      "nombre": "El Rubius",
+      "edad": 29,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 134,
+    "fields": {
+      "nombre": "Spreen",
+      "edad": 30,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 135,
+    "fields": {
+      "nombre": "Coscu",
+      "edad": 31,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 136,
+    "fields": {
+      "nombre": "MrBeast",
+      "edad": 32,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 137,
+    "fields": {
+      "nombre": "Pokimane",
+      "edad": 33,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 138,
+    "fields": {
+      "nombre": "IlloJuan",
+      "edad": 34,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 139,
+    "fields": {
+      "nombre": "Rivers",
+      "edad": 35,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 140,
+    "fields": {
+      "nombre": "WestCOL",
+      "edad": 36,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 141,
+    "fields": {
+      "nombre": "TheGrefg",
+      "edad": 37,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 142,
+    "fields": {
+      "nombre": "xQc",
+      "edad": 38,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 143,
+    "fields": {
+      "nombre": "Kai Cenat",
+      "edad": 39,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 144,
+    "fields": {
+      "nombre": "IShowSpeed",
+      "edad": 22,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 145,
+    "fields": {
+      "nombre": "Amouranth",
+      "edad": 23,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 146,
+    "fields": {
+      "nombre": "Ninja",
+      "edad": 24,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 147,
+    "fields": {
+      "nombre": "Rubius Z",
+      "edad": 25,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 148,
+    "fields": {
+      "nombre": "Quackity",
+      "edad": 26,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 149,
+    "fields": {
+      "nombre": "JuanSGuarnizo",
+      "edad": 27,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
+    }
+  },
+  {
+    "model": "juego.famoso",
+    "pk": 150,
+    "fields": {
+      "nombre": "Momo",
+      "edad": 28,
+      "profesion": "Streamer",
+      "categoria": "Internet",
+      "imagen": ""
     }
   }
 ]

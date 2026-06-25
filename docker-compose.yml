@@ -23,9 +23,9 @@ services:
     # Cualquier cambio que hagas en tu código se reflejará inmediatamente sin reconstruir.
     volumes:
       - .:/app
-      # Volumen persistente para las imágenes subidas por el admin.
-      # Sin esto, al reiniciar el contenedor se borrarían todas las fotos.
-      - media_data:/app/media
+      # Montamos la carpeta de media del proyecto para que las imágenes
+      # ya existentes en el repositorio sean visibles dentro del contenedor.
+      - ./media:/app/media
     # Mapeo de puertos: Redirecciona el puerto 8000 de tu máquina local al 8000 del contenedor
     ports:
       - "8000:8000"

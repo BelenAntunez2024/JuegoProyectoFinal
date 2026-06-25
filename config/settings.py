@@ -24,7 +24,12 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
 
 
 # Application definition
@@ -127,9 +132,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# ==============================================================================
-# CONFIGURACIÓN DE ARCHIVOS DE MEDIA (IMÁGENES SUBIDAS POR EL ADMIN)
-# ==============================================================================
+
 # MEDIA_URL: La URL pública desde donde el navegador accede a las imágenes subidas.
 # Ej: http://localhost:8000/media/famosos/messi.jpg
 MEDIA_URL = '/media/'

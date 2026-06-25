@@ -82,7 +82,12 @@
                 <div class="col">
                     <div class="card-celebrity card-banca">
                         <div class="celebrity-img-wrapper">
-                           <img src="{{ famoso.imagen_url }}" class="celebrity-img" alt="{{ famoso.nombre }}" referrerpolicy="no-referrer" onerror="this.src='https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto';">
+                            {% if famoso.imagen %}
+                            <img src="{{ famoso.imagen.url }}" class="celebrity-img" alt="{{ famoso.nombre }}">
+                            {% else %}
+                            <img src="https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto" class="celebrity-img"
+                                alt="Sin foto">
+                            {% endif %}
                             <div class="celebrity-age-badge age-banca">
                                 Edad: {% if jugando %}???{% else %}{{ famoso.edad }}{% endif %}
                             </div>
@@ -107,9 +112,12 @@
                 <div class="col">
                     <div class="card-celebrity">
                         <div class="celebrity-img-wrapper">
-                            <img src="{{ famoso.imagen_url }}" class="celebrity-img" alt="{{ famoso.nombre }}"
-                                referrerpolicy="no-referrer"
-                                onerror="this.src='https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto';">
+                            {% if famoso.imagen %}
+                            <img src="{{ famoso.imagen.url }}" class="celebrity-img" alt="{{ famoso.nombre }}">
+                            {% else %}
+                            <img src="https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto" class="celebrity-img"
+                                alt="Sin foto">
+                            {% endif %}
                             <div class="celebrity-age-badge">
                                 Edad: {% if jugando %}???{% else %}{{ famoso.edad }}{% endif %}
                             </div>

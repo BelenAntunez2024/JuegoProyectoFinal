@@ -1,7 +1,9 @@
 from django.shortcuts import HttpResponse, render, redirect
 import random
 from .models import Famoso
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def inicio(request):
     """
     VISTA DE INICIO:
@@ -46,6 +48,7 @@ def iniciar_partida(request):
     # Redirecciona al tablero de juego
     return redirect('jugar_partida')
 
+@csrf_exempt
 def jugar_partida(request):
     """
     VISTA PRINCIPAL DEL TABLERO:
@@ -110,7 +113,7 @@ def jugar_partida(request):
         # PROTECCIÓN DE DATOS: Mientras el jugador esté jugando, le enviamos "???" para ocultar las sumas reales.
         # Solo revelamos los números cuando "jugando" pase a ser False.
         'jugador_suma': request.session['jugador_suma'] if not request.session.get('jugando') else "???",
-        'banca_suma': request.session.get('banca_suma') if not request.session.get('jugando') else "???",
+        'banca_suma': request.session.get('banca_suma'),
         'jugando': request.session.get('jugando'),
         'resultado': request.session.get('resultado', '')
     })
