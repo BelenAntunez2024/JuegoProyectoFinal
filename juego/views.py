@@ -106,14 +106,17 @@ def jugar_partida(request):
     # Traemos de la base de datos los famosos reales que corresponden a los IDs guardados en la sesión
     mano = Famoso.objects.filter(id__in=request.session['jugador_cartas'])
     banca_mano = Famoso.objects.filter(id__in=request.session['banca_cartas'])
+
+    # Almacenamos los valores en variables limpias antes de pasarlos al template
+    es_jugando = request.session.get('jugando', True)
+    suma_banca_real = request.session.get('banca_suma', 0)
+    suma_jugador_real = request.session.get('jugador_suma', 0)
     
     return render(request, 'juego/partida.html', {
         'mano': mano,
         'banca_mano': banca_mano,
-        # PROTECCIÓN DE DATOS: Mientras el jugador esté jugando, le enviamos "???" para ocultar las sumas reales.
-        # Solo revelamos los números cuando "jugando" pase a ser False.
-        'jugador_suma': request.session['jugador_suma'] if not request.session.get('jugando') else "???",
-        'banca_suma': request.session.get('banca_suma'),
-        'jugando': request.session.get('jugando'),
+        'jugador_suma': suma_jugador_real if not es_jugando else "???",
+        'banca_suma': suma_banca_real,  # Nos aseguramos de que siempre vaya un entero limpio
+        'jugando': es_jugando,
         'resultado': request.session.get('resultado', '')
     })

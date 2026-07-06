@@ -1,0 +1,22 @@
+.score-box-inicio {
+    background: linear-gradient(135deg, #161626, #1e1e34);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.score-box-inicio ul { 
+    padding-left: 20px; 
+    margin-bottom: 0; 
+}
+
+.score-box-inicio ul li { 
+    font-size: 0.95rem; 
+    color: var(--text-muted) !important; 
+    margin-bottom: 10px; 
+    line-height: 1.5; 
+}
+
+.score-box-inicio ul li strong { 
+    color: #ffffff; 
+}

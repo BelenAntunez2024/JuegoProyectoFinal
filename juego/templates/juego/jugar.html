@@ -1,37 +1,76 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>¿Qué edad tiene? - Celebrity Age Clash</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>¿Qué edad tiene?</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Custom Estilos Modulares -->
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jugar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/partida.css' %}" rel="stylesheet"> <!-- Importamos partida.css para reutilizar el diseño de Incógnito si hiciera falta -->
 </head>
-<body class="bg-light">
+
+<body class="bg-game-dark">
     <div class="container mt-5">
-        <div class="card shadow mx-auto" style="max-width: 400px;">
+        
+        <!-- Badge superior para dar contexto de juego -->
+        <div class="text-center mb-4">
+            <h4 class="text-uppercase fw-bold text-info" style="letter-spacing: 2px; font-size: 0.85rem;">Tu Turno</h4>
+        </div>
+
+        <!-- Tarjeta Principal de Adivinación -->
+        <div class="card card-guess shadow mx-auto" style="max-width: 400px;">
             {% if famoso %}
-                <img src="{{ famoso.imagen_url }}" class="card-img-top" alt="{{ famoso.nombre }}">
-                <div class="card-body text-center">
-                    <h2 class="card-title">{{ famoso.nombre }}</h2>
-                    <p class="text-muted">{{ famoso.profesion }}</p>
-                    
-                    <form method="POST" class="mt-4">
+                
+                <!-- Contenedor de la foto adaptado para soportar el modo Incógnito -->
+                <div class="celebrity-img-wrapper" style="padding-top: 100%; position: relative;">
+                    {% if famoso.imagen %}
+                        <img src="{{ famoso.imagen.url }}" class="celebrity-img" alt="{{ famoso.nombre }}">
+                    {% else %}
+                        <div class="carta-placeholder">
+                            <span class="icon">?</span>
+                            <span class="text">Incógnito</span>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="card-body text-center p-4">
+                    <h2 class="fw-bold mb-2" style="color: #ffffff;">{{ famoso.nombre }}</h2>
+                    <span class="profession-badge mb-4">{{ famoso.profesion }}</span>
+
+                    <form method="POST" class="mt-3">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <input type="number" name="edad_estimada" class="form-control" placeholder="¿Qué edad tiene?" required>
+                            <input type="number" name="edad_estimada" class="form-control form-game-input" placeholder="¿Qué edad tiene?" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Adivinar</button>
+                        <button type="submit" class="btn btn-game-action w-100">Adivinar</button>
                     </form>
                 </div>
+
                 {% if resultado %}
-                    <div class="alert alert-info mt-3">{{ resultado }}</div>
-                    <a href="{% url 'jugar' %}" class="btn btn-secondary w-100">Jugar otra vez</a>
+                <div class="px-4 pb-4">
+                    <!-- Alerta neonizada -->
+                    <div class="alert alert-game-info text-center mt-0 mb-3">{{ resultado }}</div>
+                    <!-- Botón estilizado con la clase global btn-custom -->
+                    <a href="{% url 'jugar' %}" class="btn btn-custom btn-custom-success w-100">
+                        Jugar otra vez
+                    </a>
+                </div>
                 {% endif %}
             {% else %}
-                <div class="card-body">
-                    <p>No hay famosos cargados. ¡Carga algunos desde el <a href="/admin">Panel Admin</a>!</p>
+                <div class="card-body text-center py-5">
+                    <p class="text-muted">No hay famosos cargados. ¡Carga algunos desde el <a href="/admin" class="text-info fw-bold">Panel Admin</a>!</p>
                 </div>
             {% endif %}
         </div>
     </div>
 </body>
+
 </html>

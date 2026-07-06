@@ -1,0 +1,57 @@
+/* Variables de color de tu juego */
+:root {
+    --bg-dark: #0f0f1a;
+    --card-dark: #1e1e2f;
+    --cyan-neon: #00b4db;
+    --yellow-gold: #ffae00;
+    --red-danger: #ff4757;
+    --text-muted: #a0a0cb;
+}
+
+body {
+    background-color: var(--bg-dark) !important;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* El título principal con degradado estilizado */
+.brand-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--cyan-neon), var(--yellow-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* Componente de Botón Global (.btn-custom) */
+.btn-custom {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s;
+    border: none;
+}
+
+.btn-custom-primary {
+    background: linear-gradient(135deg, var(--cyan-neon), #0083b0);
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
+}
+
+.btn-custom-danger {
+    background: linear-gradient(135deg, var(--red-danger), #ff6b81);
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.btn-custom-success {
+    background: linear-gradient(135deg, var(--yellow-gold), #ff8c00);
+    color: #131322 !important;
+    box-shadow: 0 4px 15px rgba(255, 174, 0, 0.3);
+}
+
+.btn-custom:hover { transform: translateY(-2px); opacity: 0.95; }
+.btn-custom:active { transform: translateY(0) scale(0.98); }

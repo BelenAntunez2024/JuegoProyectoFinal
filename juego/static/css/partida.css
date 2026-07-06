@@ -1,0 +1,94 @@
+/* Marcador Superior */
+.score-box {
+    background: linear-gradient(135deg, #161626, #1e1e34);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.score-label { 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+    color: #8f8fa8; 
+    margin-bottom: 5px; 
+}
+
+.score-value { 
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    color: var(--yellow-gold); 
+}
+
+/* Tarjetas de Famosos */
+.card-celebrity {
+    background-color: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-celebrity:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 180, 219, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 180, 219, 0.15);
+}
+
+.celebrity-img-wrapper { 
+    position: relative; 
+    width: 100%; 
+    padding-top: 125px; 
+    background-color: #252538; 
+}
+
+.celebrity-img { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center 20%;
+}
+
+/* Evitamos nombres cortados: permitimos 2 líneas */
+.card-celebrity h6 {
+    font-size: 0.95rem; 
+    color: #ffffff; 
+    margin-bottom: 8px !important;
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    white-space: normal; 
+    height: 2.4em; 
+    line-height: 1.2em;
+}
+
+.profession-badge {
+    display: inline-block; 
+    background-color: rgba(255, 255, 255, 0.07); 
+    color: var(--text-muted);
+    padding: 4px 10px; 
+    border-radius: 8px; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+    text-transform: uppercase;
+}
+
+/* Nuevo Placeholder de Incógnito */
+.carta-placeholder {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1f1f32, #131322);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.carta-placeholder .icon { font-size: 2.8rem; color: rgba(255, 174, 0, 0.6); font-weight: bold; }
+.carta-placeholder .text { font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #5f5f7a; font-weight: 600; }

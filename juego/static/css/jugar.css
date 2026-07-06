@@ -1,0 +1,47 @@
+.card-guess {
+    background-color: var(--card-dark) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-guess .card-img-top { 
+    height: 320px; 
+    object-fit: cover; 
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05); 
+}
+
+.form-game-input {
+    background-color: #131322 !important; 
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important; 
+    border-radius: 10px !important; 
+    padding: 12px !important; 
+    font-size: 1.1rem !important; 
+    text-align: center;
+}
+
+.form-game-input:focus { 
+    border-color: var(--cyan-neon) !important; 
+    box-shadow: 0 0 10px rgba(0, 180, 219, 0.3) !important; 
+}
+
+.form-game-input::placeholder { color: #5f5f7a; }
+
+.btn-game-action {
+    background: linear-gradient(135deg, var(--cyan-neon), #0083b0); 
+    border: none; 
+    color: white;
+    font-weight: 600; 
+    padding: 12px; 
+    border-radius: 10px; 
+    letter-spacing: 0.5px;
+}
+
+.alert-game-info {
+    background-color: rgba(0, 180, 219, 0.1) !important; 
+    border: 1px solid rgba(0, 180, 219, 0.3) !important; 
+    color: var(--cyan-neon) !important; 
+    border-radius: 12px !important;
+}

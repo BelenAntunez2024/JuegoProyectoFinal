@@ -14,7 +14,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Custom Estilos -->
-    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/partida.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -61,10 +62,6 @@
                 <div class="col-md-8">
                     <div class="alert-result">
                         <h2 class="fw-bold mb-3" style="color: #ffae00;">{{ resultado }}</h2>
-                        <p class="lead mb-4">
-                            Resultado Final: Tu suma (<strong>{{ jugador_suma }}</strong>) vs Banca (<strong>{{
-                                banca_suma }}</strong>)
-                        </p>
                         <a href="{% url 'iniciar_partida' %}" class="btn btn-custom btn-custom-success">
                             Jugar de Nuevo
                         </a>
@@ -85,8 +82,10 @@
                             {% if famoso.imagen %}
                             <img src="{{ famoso.imagen.url }}" class="celebrity-img" alt="{{ famoso.nombre }}">
                             {% else %}
-                            <img src="https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto" class="celebrity-img"
-                                alt="Sin foto">
+                            <div class="carta-placeholder">
+                                <span class="icon">?</span>
+                                <span class="text">Incógnito</span>
+                            </div>
                             {% endif %}
                             <div class="celebrity-age-badge age-banca">
                                 Edad: {% if jugando %}???{% else %}{{ famoso.edad }}{% endif %}
@@ -115,8 +114,11 @@
                             {% if famoso.imagen %}
                             <img src="{{ famoso.imagen.url }}" class="celebrity-img" alt="{{ famoso.nombre }}">
                             {% else %}
-                            <img src="https://placehold.co/400x500/1e1e2f/ffffff?text=Sin+Foto" class="celebrity-img"
-                                alt="Sin foto">
+                            <!-- Corregido: Ahora tu mano también usa el diseño de incógnito profesional -->
+                            <div class="carta-placeholder">
+                                <span class="icon">?</span>
+                                <span class="text">Incógnito</span>
+                            </div>
                             {% endif %}
                             <div class="celebrity-age-badge">
                                 Edad: {% if jugando %}???{% else %}{{ famoso.edad }}{% endif %}

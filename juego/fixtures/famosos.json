@@ -1631,7 +1631,7 @@
     "model": "juego.famoso",
     "pk": 149,
     "fields": {
-      "nombre": "JuanSGuarnizo",
+      "nombre": "Juan Guarnizo",
       "edad": 27,
       "profesion": "Streamer",
       "categoria": "Internet",
