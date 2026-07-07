@@ -14,109 +14,144 @@ def inicio(request):
 
 def iniciar_partida(request):
     """
-    VISTA DE INICIALIZACIÓN:
-    Esta función prepara todo el estado de una partida nueva.
-    1. Trae a todos los famosos cargados en la base de datos PostgreSQL.
-    2. Valida que haya al menos 6 famosos (5 para la banca + mínimo 1 para el jugador).
-    3. Selecciona 5 famosos al azar para armar la META secreta (la banca).
-    4. Guarda los datos clave en la sesión del usuario (en el servidor) para que no 
-       puedan ser hackeados desde la consola de desarrollador del navegador.
-    5. Redirecciona al jugador a la pantalla de la partida.
+    VISTA DE INICIALIZACIÓN MULTIJUGADOR LOCAL:
+    Prepara el estado de la sesión para 2 jugadores de forma independiente.
     """
     todos = list(Famoso.objects.all())
-    if len(todos) < 6: 
-        # Si no hay suficientes famosos, detenemos el juego e indicamos la acción correctiva
-        return HttpResponse("Carga al menos 6 famosos en el admin.")
+    if len(todos) < 10: 
+        return HttpResponse("Carga al menos 10 famosos en el admin para poder jugar en modo multijugador.")
     
     # Selecciona 5 famosos únicos y aleatorios para la banca
     seleccion = random.sample(todos, 5)
     
-    # --- SISTEMA DE SESIÓN (ESTADO DEL JUEGO) ---
-    # Guardamos los IDs de la banca para poder mostrarlos pero sin revelar sus edades
+    # --- SISTEMA DE SESIÓN COMPATIBLE CON EL NUEVO TABLERO ---
     request.session['banca_cartas'] = [f.id for f in seleccion]
-    # Suma total de las edades que el jugador debe intentar alcanzar sin pasarse
     request.session['banca_suma'] = sum(f.edad for f in seleccion)
-    # Lista de IDs de famosos que el jugador ha solicitado (comienza vacía)
-    request.session['jugador_cartas'] = []
-    # Acumulador de edad de los famosos del jugador
-    request.session['jugador_suma'] = 0
-    # Bandera para saber si el juego sigue activo o ya terminó
+    
+    # Datos específicos del Jugador 1
+    request.session['j1_cartas'] = []
+    request.session['j1_suma'] = 0
+    
+    # Datos específicos del Jugador 2
+    request.session['j2_cartas'] = []
+    request.session['j2_suma'] = 0
+    
+    # Control de flujo de la partida
+    request.session['turno'] = 1  # Inicia el Jugador 1
     request.session['jugando'] = True
-    # Mensaje de victoria/derrota que se revelará al final
     request.session['resultado'] = "" 
     
-    # Redirecciona al tablero de juego
+    # Guardamos explícitamente en la base de sesiones antes de redirigir
+    request.session.save()
+    
     return redirect('jugar_partida')
 
 @csrf_exempt
 def jugar_partida(request):
     """
-    VISTA PRINCIPAL DEL TABLERO:
-    Controla el desarrollo del juego por turnos (Pedir Carta / Plantarse).
+    VISTA PRINCIPAL DEL TABLERO MULTIJUGADOR LOCAL:
+    Maneja el desarrollo del juego por turnos consecutivos (J1 luego J2) contra la Banca.
     """
-    # Seguridad: Si el jugador intenta entrar directamente a la partida sin haber
-    # inicializado el juego, lo redirigimos a la pantalla de inicio.
-    if 'jugador_cartas' not in request.session or 'banca_cartas' not in request.session:
+    # Seguridad: Si falta alguna clave en la sesión, reiniciamos
+    if 'banca_cartas' not in request.session or 'j1_cartas' not in request.session:
         return redirect('iniciar_partida')
         
-    # --- ACCIONES DEL JUGADOR (PETICIONES POST) ---
-    if request.method == 'POST' and request.session.get('jugando'):
+    turno_actual = request.session.get('turno', 1)
+    es_jugando = request.session.get('jugando', True)
+    
+    # --- ACCIONES DE LOS JUGADORES (PETICIONES POST) ---
+    if request.method == 'POST' and es_jugando:
         
-        # CASO A: El jugador presiona "Pedir Carta"
+        # CASO A: El jugador del turno actual pide carta
         if 'pedir_carta' in request.POST:
-            # Creamos una lista de todos los famosos a excluir (los que ya tiene el jugador + los de la banca)
-            excluidos = request.session['jugador_cartas'] + request.session['banca_cartas']
+            # Excluimos la banca y lo que ya tengan AMBOS jugadores para evitar cartas repetidas
+            excluidos = (request.session['banca_cartas'] + 
+                         request.session['j1_cartas'] + 
+                         request.session['j2_cartas'])
             
-            # Buscamos un famoso aleatorio que no esté excluido
             nuevo_famoso = Famoso.objects.exclude(id__in=excluidos).order_by('?').first()
             
             if nuevo_famoso:
-                # Actualizamos la suma de edad del jugador y añadimos la carta a su mano
-                request.session['jugador_suma'] += nuevo_famoso.edad
-                request.session['jugador_cartas'].append(nuevo_famoso.id)
-                
-                # REGLA DE BUST (PASARSE): Si la suma del jugador supera la de la banca, pierde automáticamente
-                if request.session['jugador_suma'] > request.session['banca_suma']:
-                    request.session['jugando'] = False
-                    request.session['resultado'] = "Te pasaste. Gana la banca."
+                if turno_actual == 1:
+                    request.session['j1_suma'] += nuevo_famoso.edad
+                    request.session['j1_cartas'].append(nuevo_famoso.id)
+                    # REGLA BUST J1: Si J1 se pasa, termina su turno forzosamente y pasa al J2
+                    if request.session['j1_suma'] > request.session['banca_suma']:
+                        request.session['turno'] = 2
+                else:
+                    request.session['j2_suma'] += nuevo_famoso.edad
+                    request.session['j2_cartas'].append(nuevo_famoso.id)
+                    # REGLA BUST J2: Si J2 se pasa, termina la partida ya que es el último
+                    if request.session['j2_suma'] > request.session['banca_suma']:
+                        es_jugando = False
+                        request.session['jugando'] = False
             else:
-                # En caso extremo de que el jugador pida tantas cartas que se acabe la base de datos
+                # Si se acaban los famosos, cerramos la partida
+                es_jugando = False
                 request.session['jugando'] = False
-                request.session['resultado'] = "No hay más famosos disponibles. Fin de la partida."
             
-            # Guardamos explícitamente los cambios de la sesión modificada
             request.session.save()
             
-        # CASO B: El jugador presiona "Plantarse"
+        # CASO B: El jugador del turno actual decide Plantarse
         elif 'plantarse' in request.POST:
-            request.session['jugando'] = False
+            if turno_actual == 1:
+                # J1 se planta, le pasamos el control al Jugador 2
+                request.session['turno'] = 2
+            else:
+                # J2 se planta, finaliza la partida y evaluamos resultados
+                es_jugando = False
+                request.session['jugando'] = False
+                
+            request.session.save()
+
+        # --- EVALUACIÓN DE GANADORES (Solo cuando la partida finaliza) ---
+        if not es_jugando:
             banca = request.session['banca_suma']
-            jugador = request.session['jugador_suma']
+            j1 = request.session['j1_suma']
+            j2 = request.session['j2_suma']
             
-            # Determinamos quién ganó y calculamos la diferencia
-            if jugador == banca:
-                request.session['resultado'] = "¡Genial, lograste una coincidencia exacta!"
-            else: 
-                dif = banca - jugador
-                request.session['resultado'] = f"Te plantaste. Quedaste a {dif} años del total de la banca."
+            # Calculamos las distancias (si se pasaron, quedan descalificados poniendo una distancia infinita)
+            dist_j1 = (banca - j1) if j1 <= banca else float('inf')
+            dist_j2 = (banca - j2) if j2 <= banca else float('inf')
             
+            if dist_j1 == float('inf') and dist_j2 == float('inf'):
+                request.session['resultado'] = "¡Ambos se pasaron! Gana la banca."
+            elif dist_j1 == dist_j2:
+                request.session['resultado'] = f"¡Empate! Ambos quedaron a {dist_j1} años de la banca."
+            elif dist_j1 < dist_j2:
+                request.session['resultado'] = f"¡Ganó el Jugador 1! Quedó a {dist_j1} años."
+            else:
+                request.session['resultado'] = f"¡Ganó el Jugador 2! Quedó a {dist_j2} años."
+                
             request.session.save()
             
     # --- RENDERIZADO DEL TABLERO ---
-    # Traemos de la base de datos los famosos reales que corresponden a los IDs guardados en la sesión
-    mano = Famoso.objects.filter(id__in=request.session['jugador_cartas'])
+    # Enviamos las cartas reales de la banca para que se vean las fotos
     banca_mano = Famoso.objects.filter(id__in=request.session['banca_cartas'])
-
-    # Almacenamos los valores en variables limpias antes de pasarlos al template
-    es_jugando = request.session.get('jugando', True)
-    suma_banca_real = request.session.get('banca_suma', 0)
-    suma_jugador_real = request.session.get('jugador_suma', 0)
+    
+    # Cartas del jugador activo (para que vea a sus famosos)
+    cartas_del_turno = request.session['j1_cartas'] if turno_actual == 1 and es_jugando else request.session['j2_cartas']
+    mano = Famoso.objects.filter(id__in=cartas_del_turno)
+    
+    # Manos para el resumen del final
+    j1_mano_final = Famoso.objects.filter(id__in=request.session['j1_cartas'])
+    j2_mano_final = Famoso.objects.filter(id__in=request.session['j2_cartas'])
     
     return render(request, 'juego/partida.html', {
-        'mano': mano,
         'banca_mano': banca_mano,
-        'jugador_suma': suma_jugador_real if not es_jugando else "???",
-        'banca_suma': suma_banca_real,  # Nos aseguramos de que siempre vaya un entero limpio
+        'mano': mano,  
+        'j1_mano': j1_mano_final,
+        'j2_mano': j2_mano_final,
+        
+        # --- MÁXIMO SECRETO EN LOS NÚMEROS ---
+        # La suma de la banca NO se sabe hasta el final
+        'banca_suma': "???" if es_jugando else request.session.get('banca_suma', 0),
+        
+        # Los jugadores NO ven sus sumas numéricas en pantalla mientras juegan. ¡A calcular de memoria!
+        'j1_suma': request.session['j1_suma'] if not es_jugando else "???",
+        'j2_suma': request.session['j2_suma'] if not es_jugando else "???",
+        
+        'turno': turno_actual,
         'jugando': es_jugando,
         'resultado': request.session.get('resultado', '')
     })
