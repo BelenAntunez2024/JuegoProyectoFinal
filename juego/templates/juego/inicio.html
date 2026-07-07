@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,28 +16,43 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/inicio.css' %}" rel="stylesheet">
 </head>
+
 <body class="bg-game-dark">
 
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
         <div class="score-box-inicio text-center p-5 mx-auto" style="max-width: 600px;">
             <h1 class="brand-title mb-4">Celebrity Age Clash</h1>
             <p class="lead mb-4">Un juego de estrategia, intuición y cultura general.</p>
-            
-            <div class="text-start mb-4 p-3 rounded" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+
+            <div class="text-start mb-4 p-3 rounded"
+                style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
                 <h5 class="fw-bold text-warning mb-3">¿Cómo jugar?</h5>
                 <ul class="text-muted">
-                    <li>La <strong>Banca</strong> elige a 5 famosos al azar y calcula la suma total de sus edades en secreto.</li>
-                    <li>Tu objetivo es pedir cartas de famosos y tratar de <strong>acercarte a esa suma</strong> lo más posible.</li>
+                    <li>La <strong>Banca</strong> elige a 5 famosos al azar y calcula la suma total de sus edades en
+                        secreto.</li>
+                    <li>Tu objetivo es pedir cartas de famosos y tratar de <strong>acercarte a esa suma</strong> lo más
+                        posible.</li>
                     <li>Las edades de las cartas estarán <strong>ocultas</strong> hasta que termine la partida.</li>
-                    <li>Si la suma de tus famosos supera la meta de la banca, <strong>pierdes inmediatamente</strong>.</li>
+                    <li>Si la suma de tus famosos supera la meta de la banca, <strong>pierdes inmediatamente</strong>.
+                    </li>
                 </ul>
             </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-4">
+                <!-- Botón Modo Solitario -->
+                <a href="{% url 'iniciar_partida_solo' %}"
+                    class="btn btn-custom btn-custom-primary py-3 px-4 fs-5 fw-bold text-decoration-none">
+                    👤 Modo Solitario
+                </a>
 
-            <a href="{% url 'iniciar_partida' %}" class="btn btn-custom btn-custom-primary btn-lg px-5">
-                Comenzar Partida
-            </a>
+                <!-- Botón Modo Multijugador -->
+                <a href="{% url 'iniciar_partida' %}"
+                    class="btn btn-custom btn-custom-success py-3 px-4 fs-5 fw-bold text-decoration-none">
+                    👥 Multijugador
+                </a>
+            </div>
         </div>
     </div>
 
 </body>
+
 </html>
