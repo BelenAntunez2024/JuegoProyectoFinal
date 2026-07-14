@@ -1,4 +1,12 @@
+"""Modelos del app `juego`.
+
+Contiene la definición de `Famoso`, la entidad principal del juego que
+representa a cada carta/personaje con su nombre, profesión, edad y opcionalmente
+una imagen. Los comentarios en los campos explican la intención de cada uno.
+"""
+
 from django.db import models
+
 
 class Famoso(models.Model):
     """

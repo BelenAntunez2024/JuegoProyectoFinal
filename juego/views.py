@@ -1,14 +1,29 @@
+"""Vistas del juego.
+
+Contiene las vistas principales: `inicio`, `iniciar_partida`,
+`iniciar_partida_solo` y `jugar_partida`. Estas vistas gestionan el estado
+del juego mediante la sesión de Django usando claves como:
+
+- `banca_cartas`: lista de IDs de famosos elegidos por la banca.
+- `banca_suma`: suma de edades de la banca.
+- `j1_cartas`, `j2_cartas`: listas de IDs con las cartas de cada jugador.
+- `j1_suma`, `j2_suma`: sumas de edades de cada jugador.
+- `turno`, `jugando`, `resultado`, `modo_solo`: control de flujo.
+"""
+
 from django.shortcuts import HttpResponse, render, redirect
 import random
 from .models import Famoso
 from django.views.decorators.csrf import csrf_exempt
 
+
 @csrf_exempt
 def inicio(request):
-    """
-    VISTA DE INICIO:
-    Esta función simplemente renderiza la pantalla de bienvenida (inicio.html).
-    Funciona como el lobby o el 'splash screen' de nuestro juego.
+    """Renderiza la pantalla de bienvenida y resetea el estado de la sesión.
+
+    Esta vista borra las claves de sesión asociadas a una partida previa para
+    asegurar que se comience desde un estado limpio cuando el jugador vuelve
+    al menú principal.
     """
 
     keys_a_borrar = ['banca_cartas', 'banca_suma', 'j1_cartas', 'j1_suma', 'j2_cartas', 'j2_suma', 'turno', 'jugando', 'resultado', 'modo_solo']
