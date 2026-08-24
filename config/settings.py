@@ -145,3 +145,21 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#AUTENTICACION
+# Cuando un usuario no está logueado e intenta acceder a una vista protegida,
+# Django lo redirige a esta URL automáticamente.
+LOGIN_URL = '/juego/login/'
+
+# Después de loguearse exitosamente, Django redirige al usuario acá.
+LOGIN_REDIRECT_URL = '/juego/'
+
+# Después de cerrar sesión, Django redirige al usuario acá.
+LOGOUT_REDIRECT_URL = '/juego/login/'
+
+# CONFIGURACIÓN DE EMAIL (para recuperación de contraseña)
+# ==============================================================================
+
+# En desarrollo: los emails se muestran en la consola/terminal de Docker
+# en vez de enviarse de verdad. Perfecto para probar sin configurar Gmail.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

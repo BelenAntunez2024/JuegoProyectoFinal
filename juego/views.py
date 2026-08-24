@@ -16,7 +16,12 @@ import random
 from .models import Famoso
 from django.views.decorators.csrf import csrf_exempt
 
+# ── Nuevos imports para autenticación ──
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from .forms import FormularioRegistro, FormularioLogin
 
+@login_required
 @csrf_exempt
 def inicio(request):
     """Renderiza la pantalla de bienvenida y resetea el estado de la sesión.
@@ -34,6 +39,7 @@ def inicio(request):
     request.session.save()
     return render(request, 'juego/inicio.html')
 
+@login_required
 def iniciar_partida_solo(request):
     """
     VISTA DE INICIALIZACIÓN MULTIJUGADOR LOCAL:
@@ -69,6 +75,7 @@ def iniciar_partida_solo(request):
     
     return redirect('jugar_partida')
 
+@login_required
 def iniciar_partida(request):
     """
     VISTA DE INICIALIZACIÓN MULTIJUGADOR LOCAL:
@@ -96,6 +103,7 @@ def iniciar_partida(request):
     request.session.save()
     return redirect('jugar_partida')
 
+@login_required
 @csrf_exempt
 def jugar_partida(request):
     """
@@ -214,3 +222,57 @@ def jugar_partida(request):
         'jugando': es_jugando,
         'resultado': request.session.get('resultado', '')
     })
+
+def vista_login(request):
+    """Vista de inicio de sesión.
+    Si el usuario ya está logueado, lo redirige directo al inicio del juego.
+    Si recibe un POST, intenta autenticar con las credenciales del formulario.
+    Si son válidas, inicia la sesión y redirige al juego.
+    """
+    # Si el usuario ya está logueado, no tiene sentido mostrarle el login
+    if request.user.is_authenticated:
+        return redirect('inicio')
+    if request.method == 'POST':
+        # Creamos el formulario con los datos que envió el usuario
+        formulario = FormularioLogin(request, data=request.POST)
+        if formulario.is_valid():
+            # Si las credenciales son correctas, extraemos el usuario validado
+            usuario = formulario.get_user()
+            # login() crea la sesión del usuario en la base de datos
+            login(request, usuario)
+            # Redirigimos al inicio del juego
+            return redirect('inicio')
+    else:
+        # Si es GET (primera vez que entra), mostramos el formulario vacío
+        formulario = FormularioLogin()
+    return render(request, 'juego/login.html', {'formulario': formulario})
+
+def vista_registro(request):
+    """Vista de registro de nuevo usuario.
+    Muestra el formulario de registro. Si es válido, crea el usuario,
+    lo loguea automáticamente y lo redirige al juego sin necesidad de
+    pasar por el login.
+    """
+    # Si ya está logueado, mandalo al juego
+    if request.user.is_authenticated:
+        return redirect('inicio')
+    if request.method == 'POST':
+        formulario = FormularioRegistro(request.POST)
+        if formulario.is_valid():
+            # .save() crea el usuario en la base de datos
+            usuario = formulario.save()
+            # Logueamos al usuario recién creado automáticamente
+            login(request, usuario)
+            # Lo mandamos al juego, ya logueado
+            return redirect('inicio')
+    else:
+        formulario = FormularioRegistro()
+    return render(request, 'juego/registro.html', {'formulario': formulario})
+def vista_logout(request):
+    """Vista de cierre de sesión.
+    Cierra la sesión del usuario y lo redirige a la pantalla de login.
+    Acepta tanto GET como POST para simplicidad.
+    """
+    # logout() elimina la sesión del usuario de la base de datos
+    logout(request)
+    return redirect('vista_login')
