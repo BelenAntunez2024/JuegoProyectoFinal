@@ -4,23 +4,52 @@ Define las URLs locales del juego y mapea cada ruta a su vista correspondiente.
 """
 
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
     # ── Autenticación ──
-    # Pantalla de login (primera página que ve el usuario)
     path('login/', views.vista_login, name='vista_login'),
-    # Pantalla de registro de nuevo usuario
     path('registro/', views.vista_registro, name='vista_registro'),
-    # Cierre de sesión (no tiene pantalla, solo redirige)
     path('logout/', views.vista_logout, name='vista_logout'),
 
+    # ── Recuperación de Contraseña por Correo ──
+    # 1. Formulario para solicitar el reseteo ingresando el correo
+    path('password-reset/', 
+         auth_views.PasswordResetView.as_view(
+             template_name='juego/password_reset_form.html',
+             email_template_name='juego/password_reset_email.html',
+             subject_template_name='juego/password_reset_subject.txt',
+             success_url='/juego/password-reset/enviado/'
+         ), 
+         name='vista_password_reset'),
+
+    # 2. Pantalla que confirma que el correo fue enviado
+    path('password-reset/enviado/', 
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='juego/password_reset_done.html'
+         ), 
+         name='password_reset_done'),
+
+    # 3. Pantalla donde el usuario ingresa su nueva contraseña (viene del link del correo)
+    path('password-reset/<uidb64>/<token>/', 
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='juego/password_reset_confirm.html',
+             success_url='/juego/password-reset/completado/'
+         ), 
+         name='password_reset_confirm'),
+
+    # 4. Pantalla de confirmación de contraseña cambiada exitosamente
+    path('password-reset/completado/', 
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='juego/password_reset_complete.html'
+         ), 
+         name='password_reset_complete'),
+
     # ── Juego ──
-    # Página de bienvenida / menú (requiere login)
     path('', views.inicio, name='inicio'),
-    # Rutas para iniciar una partida en modos disponibles
     path('iniciar/', views.iniciar_partida, name='iniciar_partida'),
     path('iniciar-solo/', views.iniciar_partida_solo, name='iniciar_partida_solo'),
-    # Ruta del tablero de la partida
     path('partida/', views.jugar_partida, name='jugar_partida'),
 ]
+

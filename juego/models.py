@@ -31,6 +31,13 @@ class Famoso(models.Model):
     # Campo opcional para filtrar famosos por categoría (Ej: Cine, Música, Deportes)
     categoria = models.CharField(max_length=50, blank=True)
 
+    class Meta:
+        # Permiso personalizado para diferenciar Moderadores de Jugadores comunes
+        permissions = [
+            ("puede_moderar", "Puede acceder al panel de moderación y gestionar famosos"),
+        ]
+
+
     def __str__(self):
         # Define cómo se ve el objeto en el panel de administración de Django
         return f"{self.nombre} - {self.profesion}"
