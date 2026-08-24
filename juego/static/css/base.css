@@ -55,3 +55,4 @@ body {
 
 .btn-custom:hover { transform: translateY(-2px); opacity: 0.95; }
 .btn-custom:active { transform: translateY(0) scale(0.98); }
+.text-muted { color: #b8b8dc !important; }

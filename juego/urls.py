@@ -14,7 +14,6 @@ urlpatterns = [
     path('logout/', views.vista_logout, name='vista_logout'),
 
     # ── Recuperación de Contraseña por Correo ──
-    # 1. Formulario para solicitar el reseteo ingresando el correo
     path('password-reset/', 
          auth_views.PasswordResetView.as_view(
              template_name='juego/password_reset_form.html',
@@ -24,14 +23,12 @@ urlpatterns = [
          ), 
          name='vista_password_reset'),
 
-    # 2. Pantalla que confirma que el correo fue enviado
     path('password-reset/enviado/', 
          auth_views.PasswordResetDoneView.as_view(
              template_name='juego/password_reset_done.html'
          ), 
          name='password_reset_done'),
 
-    # 3. Pantalla donde el usuario ingresa su nueva contraseña (viene del link del correo)
     path('password-reset/<uidb64>/<token>/', 
          auth_views.PasswordResetConfirmView.as_view(
              template_name='juego/password_reset_confirm.html',
@@ -39,12 +36,14 @@ urlpatterns = [
          ), 
          name='password_reset_confirm'),
 
-    # 4. Pantalla de confirmación de contraseña cambiada exitosamente
     path('password-reset/completado/', 
          auth_views.PasswordResetCompleteView.as_view(
              template_name='juego/password_reset_complete.html'
          ), 
          name='password_reset_complete'),
+
+    # ── Panel de Moderación (Permisos) ──
+    path('moderador/', views.panel_moderador, name='panel_moderador'),
 
     # ── Juego ──
     path('', views.inicio, name='inicio'),
@@ -52,4 +51,3 @@ urlpatterns = [
     path('iniciar-solo/', views.iniciar_partida_solo, name='iniciar_partida_solo'),
     path('partida/', views.jugar_partida, name='jugar_partida'),
 ]
-

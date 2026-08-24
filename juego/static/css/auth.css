@@ -11,25 +11,35 @@ DE AUTENTICACIÓN (LOGIN, REGISTRO, PASSWORD RESET) */
 
 .auth-card {
     background: linear-gradient(135deg, #161626, #1e1e34);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     width: 100%;
     max-width: 480px;
     padding: 2.5rem;
+    color: #e0e0ff;
 }
 
+/* Etiquetas de los inputs (blanco brillante y legible) */
 .auth-card .form-label {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: #ffffff;
+    font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
 }
 
+/* Textos secundarios y aclaraciones (gris claro de alto contraste) */
+.auth-card p.text-muted,
+.auth-card small,
+.auth-card .text-muted {
+    color: #b8b8dc !important;
+}
+
+/* Inputs con fondo oscuro y texto blanco nítido */
 .auth-card .form-control {
-    background-color: rgba(15, 15, 26, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #ffffff;
+    background-color: rgba(15, 15, 26, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
     border-radius: 10px;
     padding: 12px 16px;
     font-size: 0.95rem;
@@ -37,20 +47,30 @@ DE AUTENTICACIÓN (LOGIN, REGISTRO, PASSWORD RESET) */
 }
 
 .auth-card .form-control:focus {
-    background-color: rgba(20, 20, 35, 0.95);
+    background-color: #161626;
     border-color: var(--cyan-neon);
-    color: #ffffff;
-    box-shadow: 0 0 0 0.25rem rgba(0, 180, 219, 0.25);
+    color: #ffffff !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 180, 219, 0.3);
 }
 
 .auth-card .form-control::placeholder {
-    color: rgba(160, 160, 203, 0.4);
+    color: #7b7b9d !important;
 }
 
+/* Evita que el autocompletado del navegador ponga fondo blanco y letra negra */
+.auth-card input:-webkit-autofill,
+.auth-card input:-webkit-autofill:hover, 
+.auth-card input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #161626 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Enlaces */
 .auth-links a {
     color: var(--cyan-neon);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: color 0.2s;
 }
 
@@ -59,12 +79,13 @@ DE AUTENTICACIÓN (LOGIN, REGISTRO, PASSWORD RESET) */
     text-decoration: underline;
 }
 
+/* Caja de alertas de error */
 .auth-error-box {
-    background: rgba(255, 71, 87, 0.1);
+    background: rgba(255, 71, 87, 0.15);
     border: 1px solid var(--red-danger);
     border-radius: 10px;
-    padding: 10px 15px;
-    color: #ff6b81;
-    font-size: 0.85rem;
+    padding: 12px 16px;
+    color: #ff8594;
+    font-size: 0.9rem;
     margin-bottom: 1.5rem;
 }

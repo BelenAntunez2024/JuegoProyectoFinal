@@ -18,8 +18,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 # ── Nuevos imports para autenticación ──
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Group
 from .forms import FormularioRegistro, FormularioLogin
+
 
 @login_required
 @csrf_exempt
@@ -250,24 +252,25 @@ def vista_login(request):
 def vista_registro(request):
     """Vista de registro de nuevo usuario.
     Muestra el formulario de registro. Si es válido, crea el usuario,
-    lo loguea automáticamente y lo redirige al juego sin necesidad de
-    pasar por el login.
+    lo asigna automáticamente al grupo 'Jugador', lo loguea y lo redirige al juego.
     """
-    # Si ya está logueado, mandalo al juego
     if request.user.is_authenticated:
         return redirect('inicio')
     if request.method == 'POST':
         formulario = FormularioRegistro(request.POST)
         if formulario.is_valid():
-            # .save() crea el usuario en la base de datos
             usuario = formulario.save()
-            # Logueamos al usuario recién creado automáticamente
+
+            # Asignamos al nuevo usuario al grupo "Jugador" automáticamente
+            grupo_jugador, _ = Group.objects.get_or_create(name='Jugador')
+            usuario.groups.add(grupo_jugador)
+
             login(request, usuario)
-            # Lo mandamos al juego, ya logueado
             return redirect('inicio')
     else:
         formulario = FormularioRegistro()
     return render(request, 'juego/registro.html', {'formulario': formulario})
+
 def vista_logout(request):
     """Vista de cierre de sesión.
     Cierra la sesión del usuario y lo redirige a la pantalla de login.
@@ -276,3 +279,19 @@ def vista_logout(request):
     # logout() elimina la sesión del usuario de la base de datos
     logout(request)
     return redirect('vista_login')
+
+@login_required
+@permission_required('juego.puede_moderar', login_url='inicio')
+def panel_moderador(request):
+    """Vista del panel de moderación.
+    Solo accesible para usuarios que tengan el permiso 'juego.puede_moderar'
+    (o superusuarios). Muestra estadísticas de la base de famosos y accesos de gestión.
+    """
+    total_famosos = Famoso.objects.count()
+    famosos_con_foto = Famoso.objects.exclude(imagen='').count()
+    categorias = Famoso.objects.values_list('categoria', flat=True).distinct()
+    return render(request, 'juego/moderador.html', {
+        'total_famosos': total_famosos,
+        'famosos_con_foto': famosos_con_foto,
+        'categorias': [c for c in categorias if c],
+    })

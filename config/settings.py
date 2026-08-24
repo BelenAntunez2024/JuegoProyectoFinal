@@ -157,9 +157,11 @@ LOGIN_REDIRECT_URL = '/juego/'
 # Después de cerrar sesión, Django redirige al usuario acá.
 LOGOUT_REDIRECT_URL = '/juego/login/'
 
-# CONFIGURACIÓN DE EMAIL (para recuperación de contraseña)
-# ==============================================================================
-
-# En desarrollo: los emails se muestran en la consola/terminal de Docker
-# en vez de enviarse de verdad. Perfecto para probar sin configurar Gmail.
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# CONFIGURACIÓN DE EMAIL (SMTP REAL - GMAIL)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER', default='')
