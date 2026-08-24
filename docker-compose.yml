@@ -1,45 +1,52 @@
 services:
   # --- SERVICIO 1: BASE DE DATOS (POSTGRESQL) ---
   db:
-    # Descarga la imagen oficial de PostgreSQL versión 16
     image: postgres:16
-    # Persistencia: Guarda la base de datos en un volumen para que los datos no se borren 
-    # cuando apaguemos el contenedor.
+    container_name: juego_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    # Variables de entorno iniciales para crear la base de datos en Postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=tu_contraseña_segura
       - POSTGRES_DB=postgres
-    
+    ports:
+      - "5432:5432"
+
   # --- SERVICIO 2: APLICACIÓN WEB (DJANGO) ---
   web:
-    # Construye el contenedor utilizando las instrucciones de nuestro 'Dockerfile'
     build: .
-    # Comando que se ejecuta al levantar el servicio (corre el servidor de Django en el puerto 8000)
-    command: python manage.py runserver 0.0.0.0:8000
-    # Sincronización: Vincula la carpeta actual del host con /app en el contenedor. 
-    # Cualquier cambio que hagas en tu código se reflejará inmediatamente sin reconstruir.
-    volumes:
-      - .:/app
-      # Montamos la carpeta de media del proyecto para que las imágenes
-      # ya existentes en el repositorio sean visibles dentro del contenedor.
-      - ./media:/app/media
-    # Mapeo de puertos: Redirecciona el puerto 8000 de tu máquina local al 8000 del contenedor
+    container_name: juego_web
     ports:
       - "8000:8000"
-    # Carga las variables de entorno del archivo .env a Django
+    volumes:
+      - .:/app
+      - ./media:/app/media
     env_file:
       - .env
-    # Orden de arranque: Asegura que el servicio de base de datos 'db' esté encendido 
-    # antes de intentar levantar la web de Django.
+    environment:
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=tu_contraseña_segura
+      - DB_PORT=5432
+      # Credenciales para la creación automática del Superusuario / Moderador
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@ejemplo.com
+      - DJANGO_SUPERUSER_PASSWORD=adminpassword123
+    # Comando de inicialización automática en cadena:
+    # 1. Aplica migraciones
+    # 2. Carga el fixture de cartas de famosos
+    # 3. Inicializa los grupos Jugador y Moderador
+    # 4. Crea el superusuario si no existe (sin pedir datos por consola)
+    # 5. Inicia el servidor
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py loaddata famosos.json || true &&
+             python manage.py crear_grupos || true &&
+             python manage.py createsuperuser --noinput || true &&
+             python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
 
-# Declaración de los volúmenes del sistema
 volumes:
-  # Datos de la base de datos PostgreSQL
   postgres_data:
-  # Imágenes de famosos subidas desde el panel de admin
-  media_data:
